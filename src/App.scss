@@ -1,22 +1,39 @@
-.App {
-  text-align: center;
+@import "../node_modules/bootstrap/scss/bootstrap";
+
+.country-carousel {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  height: 100%;
+  width: 100%;
+  z-index: -10;
+  overflow: hidden;
+
+  .country {
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+    background-size: cover;
+  }
 }
 
-.App-logo {
-  height: 40vmin;
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+.text-shadow {
   color: white;
+  text-shadow: 0 0 6px gray("800");
 }
 
-.App-link {
-  color: #09d3ac;
+.countdown {
+  font-size: 700px;
+  padding: 0;
+  line-height: 0;
+  margin: 0;
+  padding-bottom: 100px;
+}
+
+body::-webkit-scrollbar {
+  display: none;
+}
+
+.delay-30s {
+  animation-delay: 30s;
 }
