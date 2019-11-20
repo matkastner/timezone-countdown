@@ -1,6 +1,6 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "See You Next Timezone",
+  "name": "Tracks midnight in timezones across the world.",
   "icons": [
     {
       "src": "favicon.ico",
