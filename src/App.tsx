@@ -7,11 +7,7 @@ import ListGroup from "react-bootstrap/ListGroup";
 import NumberFormat from "react-number-format";
 import "./App.scss";
 import { Country } from "./types";
-import {
-  getDurationToMidnight,
-  mapCountriesToTimezones,
-  sortTimezonesByTimeToMidnight
-} from "./util";
+import { getDurationToMidnight, mapCountriesToTimezones, sortTimezonesByTimeToMidnight } from "./util";
 
 interface Props {
   countries: ReadonlyArray<Country>;
@@ -40,7 +36,7 @@ const App: React.FC<Props> = ({ countries }) => {
       {durationToMidnight.asMinutes() > 1 ? (
         <div
           key={debug + durationToMidnight.minutes()}
-          className="my-5 animated fadeOut slower delay-30s"
+          className="my-3 animated fadeOut slower delay-30s"
         >
           <div className="display-1 text-shadow text-center">
             in {nextTimezone}
