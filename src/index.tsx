@@ -20,7 +20,7 @@ fetch("https://restcountries.eu/rest/v2/all")
     // Examine the text in the response
     response.json().then(function(data) {
       ReactDOM.render(
-        <App countries={data as ReadonlyArray<Country>} />,
+        <App countries={shuffle<Country>(data as Country[])} />,
         document.getElementById("root")
       );
     });
@@ -28,6 +28,18 @@ fetch("https://restcountries.eu/rest/v2/all")
   .catch(function(err) {
     console.log("Fetch Error :-S", err);
   });
+
+/**
+ * Shuffles array in place. ES6 version
+ * @param {Array} a items An array containing the items.
+ */
+function shuffle<T>(a: T[]): ReadonlyArray<T> {
+  for (let i = a.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [a[i], a[j]] = [a[j], a[i]];
+  }
+  return a;
+}
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.

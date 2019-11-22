@@ -1,3 +1,4 @@
+import classNames from "classnames";
 import moment from "moment";
 import React, { useEffect, useRef, useState } from "react";
 import Card from "react-bootstrap/Card";
@@ -7,7 +8,11 @@ import ListGroup from "react-bootstrap/ListGroup";
 import NumberFormat from "react-number-format";
 import "./App.scss";
 import { Country } from "./types";
-import { getDurationToMidnight, mapCountriesToTimezones, sortTimezonesByTimeToMidnight } from "./util";
+import {
+  getDurationToMidnight,
+  mapCountriesToTimezones,
+  sortTimezonesByTimeToMidnight
+} from "./util";
 
 interface Props {
   countries: ReadonlyArray<Country>;
@@ -42,17 +47,23 @@ const App: React.FC<Props> = ({ countries }) => {
             in {nextTimezone}
           </div>
           <div className="display-4 text-shadow text-center animated pulse">
-            it'll be midnight in <strong>{durationToMidnight.format()}</strong>
+            it'll be midnight in{" "}
+            <strong className="monospace">{durationToMidnight.format()}</strong>
           </div>
         </div>
       ) : (
         <div
-          key={debug + durationToMidnight.seconds()}
-          className={`d-flex align-items-center justify-content-center flex-column min-vh-100 countdown text-shadow${
-            durationToMidnight.seconds() <= 10 ? " animated heartBeat" : ""
-          }`}
+          className={`d-flex align-items-center justify-content-center countdown`}
         >
-          {durationToMidnight.seconds()}
+          <div className="countdown-background animated fadeIn"></div>
+          <div
+            key={durationToMidnight.seconds()}
+            className={classNames("countdown-text monospace text-shadow", {
+              heartBeat: durationToMidnight.seconds() <= 10
+            })}
+          >
+            {durationToMidnight.seconds()}
+          </div>
         </div>
       )}
       {debug && (
@@ -106,7 +117,7 @@ const App: React.FC<Props> = ({ countries }) => {
               style={{ backgroundImage: `url(${c.flag})` }}
             />
 
-            <Carousel.Caption className="animated fadeOut slower delay-30s">
+            <Carousel.Caption className="animated fadeIn slower delay-30s">
               <h2 className="text-shadow">
                 {c.timezones.length > 0 && "in parts of "}
                 {c.nativeName}
