@@ -41,7 +41,7 @@ const App: React.FC<Props> = ({ countries }) => {
       {durationToMidnight.asMinutes() > 1 ? (
         <div
           key={debug + durationToMidnight.minutes()}
-          className="my-3 animated fadeOut slower delay-30s"
+          className="py-3 animated fadeOut slower delay-30s tx-info"
         >
           <div className="display-1 text-shadow text-center">
             in {nextTimezone}

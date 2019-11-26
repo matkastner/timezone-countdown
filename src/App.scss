@@ -1,5 +1,9 @@
 @import "../node_modules/bootstrap/scss/bootstrap";
 
+body {
+  background: black ;
+}
+
 .country-carousel {
   position: fixed;
   top: 0;
@@ -13,8 +17,12 @@
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-position: center;
-    background-size: cover;
+    background-size: contain;
   }
+}
+
+.tx-info {
+  background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0));;
 }
 
 .text-shadow {
