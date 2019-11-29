@@ -1,6 +1,6 @@
 {
   "name": "see-you-next-timezone",
-  "version": "0.10.3",
+  "version": "0.10.4",
   "private": true,
   "dependencies": {
     "@types/classnames": "^2.2.9",
