@@ -1,6 +1,9 @@
 name: Deploy to Firebase
 
-on:
+on: 
+  push:
+    branches:    
+      - master
   release:
     types: [created]
 
