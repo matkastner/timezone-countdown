@@ -7,6 +7,7 @@ import Container from "react-bootstrap/Container";
 import ListGroup from "react-bootstrap/ListGroup";
 import NumberFormat from "react-number-format";
 import "./App.scss";
+import HueConnector from "./HueConnector";
 import { Country } from "./types";
 import {
   getDurationToMidnight,
@@ -20,11 +21,11 @@ interface Props {
 
 const App: React.FC<Props> = ({ countries }) => {
   const [now, setNow] = useState(moment.utc());
-  const [debug, setDebug] = useState(false);
+  const [debug, setDebug] = useState(true);
 
   useInterval(() => {
     setNow(moment.utc());
-  }, 1000);
+  }, 1000000);
 
   const timezones = mapCountriesToTimezones(countries);
   const sortedTimezones = sortTimezonesByTimeToMidnight(
@@ -37,7 +38,7 @@ const App: React.FC<Props> = ({ countries }) => {
   const durationToMidnight: any = getDurationToMidnight(now, nextTimezone);
 
   return (
-    <div className="App" onClick={() => setDebug(!debug)}>
+    <div className="App">
       {durationToMidnight.asMinutes() > 1 ? (
         <div
           key={debug + durationToMidnight.minutes()}
@@ -68,6 +69,7 @@ const App: React.FC<Props> = ({ countries }) => {
       )}
       {debug && (
         <Container>
+          <HueConnector />
           <Card className="m-3">
             <Card.Header>Coming up next...</Card.Header>
             <ListGroup variant="flush">
@@ -156,7 +158,7 @@ const App: React.FC<Props> = ({ countries }) => {
   );
 };
 
-function useInterval(callback: () => void, delay: number) {
+export function useInterval(callback: () => void, delay: number) {
   const savedCallback = useRef<() => void>();
 
   // Remember the latest function.
