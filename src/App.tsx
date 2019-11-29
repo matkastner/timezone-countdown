@@ -31,6 +31,11 @@ const App: React.FC<Props> = ({ countries }) => {
     moment.utc(),
     Object.keys(timezones)
   );
+
+  if (!sortedTimezones[0]) {
+    return <div>No timezones found!</div>;
+  }
+
   const nextTimezone = sortedTimezones[0];
   const nextCountries = timezones[nextTimezone];
 
