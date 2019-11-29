@@ -10,18 +10,18 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v1
-      - name: Use Node.js 12
-        uses: actions/setup-node@v1
-        with:
-          node-version: 12
-      - name: npm install, build, and test
-        run: |
-          npm ci
-          npm run build --if-present
-          npm test
-        env:
-          CI: true
+    - uses: actions/checkout@v1
+    - name: Use Node.js 12.x
+      uses: actions/setup-node@v1
+      with:
+        node-version: 12.x
+    - name: npm install, build, and test
+      run: |
+        npm ci
+        npm run build --if-present
+        npm test
+      env:
+        CI: true
 
   deploy:
     needs: build
@@ -32,8 +32,8 @@ jobs:
       FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
 
     steps:
-      - uses: actions/checkout@v1
-      - uses: actions/setup-node@v1
-        with:
-          node-version: 12
-      - run: npm run deploy
+    - uses: actions/checkout@v1
+    - uses: actions/setup-node@v1
+      with:
+        node-version: 12
+    - run: npm run deploy
