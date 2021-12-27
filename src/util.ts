@@ -4,12 +4,12 @@ import { Country } from "./types";
 const countryTimezoneMapping: { [alpha2Code: string]: string } = {
   GB: "UTC+00:00",
   FR: "UTC+01:00",
-  DK: "UTC+01:00"
+  DK: "UTC+01:00",
 };
 
-export function mapCountriesToTimezones(
-  countries: ReadonlyArray<Country>
-): { [tz: string]: ReadonlyArray<Country> } {
+export function mapCountriesToTimezones(countries: ReadonlyArray<Country>): {
+  [tz: string]: ReadonlyArray<Country>;
+} {
   return countries.reduce((acc: { [tz: string]: Country[] }, c) => {
     if (countryTimezoneMapping[c.alpha2Code]) {
       const timezone = countryTimezoneMapping[c.alpha2Code];
@@ -49,7 +49,19 @@ export function sortTimezonesByTimeToMidnight(
   timezones: ReadonlyArray<string>
 ): ReadonlyArray<string> {
   return timezones
-    .map(tz => ({ tz, dtm: getDurationToMidnight(from, tz) }))
+    .map((tz) => ({ tz, dtm: getDurationToMidnight(from, tz) }))
     .sort((a, b) => a.dtm.asMilliseconds() - b.dtm.asMilliseconds())
-    .map(x => x.tz);
+    .map((x) => x.tz);
+}
+
+/**
+ * Shuffles array in place. ES6 version
+ * @param {Array} a items An array containing the items.
+ */
+export function shuffle<T>(a: T[]): ReadonlyArray<T> {
+  for (let i = a.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [a[i], a[j]] = [a[j], a[i]];
+  }
+  return a;
 }

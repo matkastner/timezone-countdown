@@ -1,0 +1,72 @@
+@import "../node_modules/bootstrap/scss/bootstrap";
+
+body {
+  background: black;
+}
+
+.country-carousel {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  height: 100%;
+  width: 100%;
+  z-index: -10;
+  overflow: hidden;
+
+  .country {
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+    background-size: contain;
+  }
+}
+
+.text-shadow {
+  color: white;
+  // text-shadow: 0 0 6px gray("800");
+  text-shadow: -1px -1px 0px #000, 0px -1px 0px #000, 1px -1px 0px #000,
+    -1px 0px 0px #000, 1px 0px 0px #000, -1px 1px 0px #000, 0px 1px 0px #000,
+    1px 1px 0px #000, -2px -2px 0px #000, -1px -2px 0px #000, 0px -2px 0px #000,
+    1px -2px 0px #000, 2px -2px 0px #000, 2px -1px 0px #000, 2px 0px 0px #000,
+    2px 1px 0px #000, 2px 2px 0px #000, 1px 2px 0px #000, 0px 2px 0px #000,
+    -1px 2px 0px #000, -2px 2px 0px #000, -2px 1px 0px #000, -2px 0px 0px #000,
+    -2px -1px 0px #000;
+}
+
+.countdown {
+  font-size: 50vw;
+  position: fixed;
+  top: 0;
+  height: 100%;
+  width: 100%;
+
+  .countdown-background {
+    height: 100%;
+    width: 100%;
+    background: black;
+    position: absolute;
+    top: 0;
+    z-index: -50;
+    animation-duration: 50s;
+  }
+}
+
+.monospace {
+  font-family: monospace !important;
+}
+
+body::-webkit-scrollbar {
+  display: none;
+}
+
+.delay-30s {
+  animation-delay: 30s;
+}
+
+.display-1 {
+  font-size: 5vw;
+}
+
+.display-4 {
+  font-size: 4vw;
+}
