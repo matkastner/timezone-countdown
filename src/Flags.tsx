@@ -110,7 +110,7 @@ const Flags: React.FC<Props> = ({ countries }) => {
         fade
         indicators={true}
         controls={false}
-        interval={1000 * 30}
+        interval={1000 * 60}
         keyboard
       >
         {nextCountries.map((c, index) => {
@@ -137,7 +137,7 @@ const Flags: React.FC<Props> = ({ countries }) => {
                 }}
               />
 
-              <Carousel.Caption className="animated fadeIn slower delay-20s">
+              <Carousel.Caption className="animated fadeIn slower delay-30s">
                 <h2 className="text-shadow">
                   {c.timezones.length > 0 && "in parts of "}
                   {c.nativeName}
