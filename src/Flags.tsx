@@ -108,7 +108,7 @@ const Flags: React.FC<Props> = ({ countries }) => {
       <Carousel
         className="country-carousel"
         fade
-        indicators={true}
+        indicators={false}
         controls={false}
         interval={1000 * 60}
         keyboard
