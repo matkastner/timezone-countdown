@@ -110,7 +110,7 @@ const Flags: React.FC<Props> = ({ countries }) => {
         fade
         indicators={true}
         controls={false}
-        interval={1000 * 60}
+        interval={1000 * 30}
         keyboard
       >
         {nextCountries.map((c, index) => {
@@ -132,7 +132,9 @@ const Flags: React.FC<Props> = ({ countries }) => {
             <Carousel.Item key={c.numericCode + index}>
               <div
                 className="d-flex align-items-center justify-content-center min-vh-100 country"
-                style={{ backgroundImage: `url("/flags/${c.alpha2Code}.svg")` }}
+                style={{
+                  backgroundImage: `url("/flags/${c.alpha2Code.toLowerCase()}.svg")`,
+                }}
               />
 
               <Carousel.Caption className="animated fadeIn slower delay-20s">
